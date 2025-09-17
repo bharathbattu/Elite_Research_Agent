@@ -1,4 +1,4 @@
-# AI Research Assistant
+# Elite Research Assistant
 
 A sophisticated AI-powered research assistant built with LangChain, Mistral AI, and Streamlit. This application provides comprehensive academic-quality research reports by intelligently combining web search, Wikipedia knowledge, and AI analysis.
 
@@ -172,5 +172,6 @@ If you encounter any issues or have questions:
 4. Verify your Python environment and dependencies
 
 ---
+
 
 Built with ❤️ using Python, LangChain, and Mistral AI
