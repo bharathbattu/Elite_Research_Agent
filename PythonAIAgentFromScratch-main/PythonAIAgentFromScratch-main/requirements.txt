@@ -1,0 +1,9 @@
+langchain-mistralai
+langchain
+langchain-community
+python-dotenv
+pydantic
+wikipedia
+google-api-python-client
+streamlit
+reportlab
