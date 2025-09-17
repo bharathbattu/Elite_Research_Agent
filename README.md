@@ -1,4 +1,4 @@
-# AI Research Assistant
+# Elite Research Agent
 
 A sophisticated AI-powered research assistant built with LangChain, Mistral AI, and Streamlit. This application provides comprehensive academic-quality research reports by intelligently combining web search, Wikipedia knowledge, and AI analysis.
 
