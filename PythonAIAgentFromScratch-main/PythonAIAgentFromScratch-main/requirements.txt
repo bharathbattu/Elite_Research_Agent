@@ -1,6 +1,8 @@
 langchain==0.0.352
+langchain-core==0.1.33
 langchain-community==0.0.7
 langchain-mistralai==0.0.5
+langchain-text-splitters==0.0.1
 python-dotenv==1.0.1
 pydantic==1.10.12
 wikipedia==1.4.0
