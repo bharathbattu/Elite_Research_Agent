@@ -12,7 +12,8 @@ from langchain_core.prompts import ChatPromptTemplate  # type: ignore
 from langchain_core.output_parsers import PydanticOutputParser
 
 # ✅ UPDATED LANGCHAIN IMPORT
-from langchain.agents import AgentExecutor, create_react_agent  # type: ignore
+from langchain.agents import AgentExecutor
+from langchain.agents.react.agent import create_react_agent
 
 from langchain_core.tools import BaseTool
 from tools import search_tool, wiki_tool, save_tool
@@ -350,3 +351,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
