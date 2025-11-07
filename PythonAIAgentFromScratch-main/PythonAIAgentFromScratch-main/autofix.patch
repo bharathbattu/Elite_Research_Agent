@@ -1,0 +1,21 @@
+diff --git a/requirements.txt b/PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/requirements.txt
+rename from requirements.txt
+rename to PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/requirements.txt
+diff --git a/PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/app.py b/PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/app.py
+index 1234567..abcdef0 100644
+--- a/PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/app.py
++++ b/PythonAIAgentFromScratch-main/PythonAIAgentFromScratch-main/app.py
+@@ -10,7 +10,8 @@ from langchain_core.prompts import ChatPromptTemplate  # type: ignore
+ from langchain_core.output_parsers import PydanticOutputParser
+-from langchain.agents import create_tool_calling_agent, AgentExecutor  # type: ignore
++from langchain.agents import AgentExecutor
++from langchain.agents.react.agent import create_react_agent
+ from langchain_core.tools import BaseTool
+ from tools import search_tool, wiki_tool, save_tool
+diff --git a/runtime.txt b/runtime.txt
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/runtime.txt
+@@ -0,0 +1 @@
++python-3.11
