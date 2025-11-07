@@ -1,7 +1,7 @@
 langchain==0.2.12
 langchain-core==0.2.29
 langchain-community==0.2.6
-langchain-mistralai==0.2.5
+langchain-mistralai==0.1.4  
 langchain-openai==0.1.7
 python-dotenv==1.0.1
 pydantic==2.7.4
@@ -9,4 +9,5 @@ wikipedia==1.4.0
 google-api-python-client==2.149.0
 streamlit==1.32.0
 reportlab==4.0.7
+
 
