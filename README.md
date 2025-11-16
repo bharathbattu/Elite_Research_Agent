@@ -2,7 +2,7 @@
 
 A sophisticated AI-powered research assistant built with LangChain, Mistral AI, and Streamlit. This application provides comprehensive academic-quality research reports by intelligently combining web search, Wikipedia knowledge, and AI analysis.
 
-## 🌟 Features
+##  Features
 
 - **Advanced AI Research**: Powered by Mistral AI language models
 - **Multi-Source Intelligence**: Integrates Google Search API and Wikipedia
@@ -12,7 +12,7 @@ A sophisticated AI-powered research assistant built with LangChain, Mistral AI, 
 - **Research History**: Session-based history management
 - **Structured Analysis**: Comprehensive reports with background, findings, challenges, and insights
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -50,7 +50,7 @@ A sophisticated AI-powered research assistant built with LangChain, Mistral AI, 
    
    Open your browser and navigate to: `http://localhost:8501`
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Core Components
 
@@ -70,7 +70,7 @@ A sophisticated AI-powered research assistant built with LangChain, Mistral AI, 
 - **Export**: ReportLab for PDF generation
 - **Configuration**: python-dotenv for environment management
 
-## 🔧 API Setup
+##  API Setup
 
 ### Google Custom Search API
 
@@ -88,7 +88,7 @@ A sophisticated AI-powered research assistant built with LangChain, Mistral AI, 
 3. Generate an API key from your dashboard
 4. Choose from available models: mistral-small, mistral-medium, mistral-large
 
-## 📖 Usage
+##  Usage
 
 1. **Enter Research Query**: Input your research topic or question
 2. **Select AI Model**: Choose between Mistral Small, Medium, or Large
@@ -102,7 +102,7 @@ A sophisticated AI-powered research assistant built with LangChain, Mistral AI, 
 5. **Export Results**: Download as TXT or PDF format
 6. **Access History**: View and reload previous research queries
 
-## 📊 Report Structure
+##  Report Structure
 
 Each research report includes:
 
@@ -117,7 +117,7 @@ Each research report includes:
 - **Methodology**: Research tools and approaches used
 - **Key Insights**: 3-5 critical takeaways
 
-## 🛠️ Customization
+##  Customization
 
 ### Adding New Research Tools
 
@@ -143,7 +143,7 @@ Update the research prompts in `main.py` to customize:
 - Research depth and focus areas
 - Output style and academic standards
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -151,18 +151,18 @@ Update the research prompts in `main.py` to customize:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🔗 Links
+##  Links
 
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [LangChain Documentation](https://docs.langchain.com/)
 - [Mistral AI Documentation](https://docs.mistral.ai/)
 - [Google Custom Search API](https://developers.google.com/custom-search)
 
-## 🆘 Support
+##  Support
 
 If you encounter any issues or have questions:
 
