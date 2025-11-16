@@ -174,4 +174,4 @@ If you encounter any issues or have questions:
 ---
 
 
-Built with ❤️ using Python, LangChain, and Mistral AI
+Built with using Python, LangChain, and Mistral AI
