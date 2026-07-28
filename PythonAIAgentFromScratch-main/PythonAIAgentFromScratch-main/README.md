@@ -1,177 +1,118 @@
-# Elite Research Assistant
+# Elite Research Assistant v2
 
-A sophisticated AI-powered research assistant built with LangChain, Mistral AI, and Streamlit. This application provides comprehensive academic-quality research reports by intelligently combining web search, Wikipedia knowledge, and AI analysis.
+An evidence-first research application that retrieves source documents, ranks evidence,
+generates a structured report through OpenRouter, validates inline citations, persists history,
+and exports Markdown, text, and PDF.
 
-## 🌟 Features
+## Why v2 is stronger
 
-- **Advanced AI Research**: Powered by Mistral AI language models
-- **Multi-Source Intelligence**: Integrates Google Search API and Wikipedia
-- **Academic-Quality Output**: Generates publication-ready research reports
-- **Professional Web Interface**: Clean, responsive Streamlit UI
-- **Export Capabilities**: Download reports as TXT or HTML/PDF formats
-- **Research History**: Session-based history management
-- **Structured Analysis**: Comprehensive reports with background, findings, challenges, and insights
+- Deterministic research pipeline instead of an unconstrained file-writing agent
+- Actual document extraction rather than synthesis from search snippets alone
+- Typed Pydantic data from retrieval through API responses
+- Inline source IDs (`[S1]`) checked against retrieved evidence
+- SSRF-resistant public URL fetching and bounded document sizes
+- SQLite report history with parameterized queries
+- Streamlit UI, CLI, and FastAPI interfaces sharing one service
+- Live OpenRouter web search with current-date grounding and source annotations
+- Configurable current web, news, academic, and background research modes
+- Freshness, language, region, allow-domain, and exclude-domain controls
+- Search caching, source metadata, credibility/freshness ranking, and retrieval metrics
+- Public-URL document extraction with a guarded OpenRouter web-fetch fallback
+- Offline tests, CI, Docker, health endpoint, and optional API-key protection
 
-## 🚀 Quick Start
+## Setup
 
-### Prerequisites
-- Python 3.8+
-- Google Search API credentials
-- Mistral AI API key
+Requires Python 3.11 or newer.
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd PythonAIAgentFromScratch-main
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Configure environment variables**
-   
-   Copy `sample.env` to `.env` and add your API keys:
-   ```bash
-   MISTRAL_API_KEY=your_mistral_api_key_here
-   GOOGLE_API_KEY=your_google_api_key_here
-   GOOGLE_CSE_ID=your_google_custom_search_engine_id_here
-   ```
-
-4. **Run the application**
-   ```bash
-   streamlit run app.py
-   ```
-
-5. **Access the interface**
-   
-   Open your browser and navigate to: `http://localhost:8501`
-
-## 🏗️ Architecture
-
-### Core Components
-
-- **`app.py`** - Main Streamlit web application with UI and user interactions
-- **`main.py`** - Core research agent logic and AI prompt engineering
-- **`tools.py`** - Research tools (Google Search, Wikipedia, File I/O)
-- **`requirements.txt`** - Python dependencies
-- **`sample.env`** - Environment configuration template
-
-### Technology Stack
-
-- **Frontend**: Streamlit with custom CSS styling
-- **AI Framework**: LangChain with tool-calling agents
-- **Language Model**: Mistral AI (Small/Medium/Large models)
-- **Search Integration**: Google Custom Search API
-- **Knowledge Base**: Wikipedia API
-- **Export**: ReportLab for PDF generation
-- **Configuration**: python-dotenv for environment management
-
-## 🔧 API Setup
-
-### Google Custom Search API
-
-1. Visit [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Enable the "Custom Search API"
-4. Create credentials (API Key)
-5. Set up a Custom Search Engine at [Google CSE](https://cse.google.com/)
-6. Get your Search Engine ID
-
-### Mistral AI API
-
-1. Visit [Mistral AI](https://mistral.ai/)
-2. Sign up for an account
-3. Generate an API key from your dashboard
-4. Choose from available models: mistral-small, mistral-medium, mistral-large
-
-## 📖 Usage
-
-1. **Enter Research Query**: Input your research topic or question
-2. **Select AI Model**: Choose between Mistral Small, Medium, or Large
-3. **Run Research**: Click the research button to start analysis
-4. **Review Results**: Get comprehensive structured reports with:
-   - Refined academic title
-   - Executive summary (150-250 words)
-   - Detailed multi-section findings
-   - Source citations
-   - Key insights and takeaways
-5. **Export Results**: Download as TXT or PDF format
-6. **Access History**: View and reload previous research queries
-
-## 📊 Report Structure
-
-Each research report includes:
-
-- **Topic**: Academically refined research title
-- **Abstract**: Professional executive summary
-- **Detailed Findings**: Multi-section analysis covering:
-  - Background and context
-  - Current developments
-  - Challenges and limitations
-  - Future outlook and implications
-- **Sources**: APA/MLA formatted citations
-- **Methodology**: Research tools and approaches used
-- **Key Insights**: 3-5 critical takeaways
-
-## 🛠️ Customization
-
-### Adding New Research Tools
-
-Extend the `tools.py` file to add new research capabilities:
-
-```python
-def custom_tool(query: str) -> str:
-    # Your custom research logic here
-    return "Research results"
-
-# Register as LangChain tool
-custom_search_tool = Tool(
-    name="custom_search",
-    description="Description of your tool",
-    func=custom_tool
-)
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+python -m pip install -e ".[dev]"
+copy sample.env .env
 ```
 
-### Modifying AI Prompts
+Edit `.env` and add a valid `OPENROUTER_API_KEY`. The default model is
+`nvidia/nemotron-3-ultra-550b-a55b:free`. That key enables both report generation and
+live OpenRouter web search. Google Custom Search is optional and can be used as an
+additional provider; Wikipedia remains the reference-source fallback.
 
-Update the research prompts in `main.py` to customize:
-- Report structure and format
-- Research depth and focus areas
-- Output style and academic standards
+## Run
 
-## 🤝 Contributing
+Streamlit:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```powershell
+# One-command Windows launcher (creates/repairs .venv when needed):
+.\start.ps1
 
-## 📄 License
+# Or launch directly:
+# Works without activating the virtual environment:
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+CLI:
 
-## 🔗 Links
+```bash
+python main.py "How is AI changing early cancer detection?"
+```
 
-- [Streamlit Documentation](https://docs.streamlit.io/)
-- [LangChain Documentation](https://docs.langchain.com/)
-- [Mistral AI Documentation](https://docs.mistral.ai/)
-- [Google Custom Search API](https://developers.google.com/custom-search)
+API:
 
-## 🆘 Support
+```bash
+uvicorn api:app --reload
+```
 
-If you encounter any issues or have questions:
+Then open `http://127.0.0.1:8000/docs`. If `APP_API_KEY` is configured, pass it in the
+`X-API-Key` header for `/v1/*` endpoints.
 
-1. Check the [Issues](https://github.com/your-repo/issues) page
-2. Review the `STREAMLIT_GUIDE.md` for detailed setup instructions
-3. Ensure all API keys are correctly configured
-4. Verify your Python environment and dependencies
+## Test
 
----
+```bash
+ruff check .
+pytest --cov=elite_research --cov-report=term-missing
+```
 
+Tests use fake retrieval and synthesis components, so they do not consume API credits.
 
-Built with ❤️ using Python, LangChain, and Mistral AI
+## Architecture
+
+1. Expand the question into targeted searches.
+2. Search the current web through OpenRouter, plus Google (when configured) and Wikipedia.
+3. Cache search results and convert provider annotations into application-owned evidence.
+4. Fetch public documents with URL and size controls; use a one-request server-fetch fallback
+   for thin or inaccessible non-search results.
+5. Deduplicate and rank evidence by relevance, credibility, freshness, and depth.
+6. Ask the configured OpenRouter model to synthesize only from numbered evidence records.
+7. Reject unknown citations and flag uncited report fields.
+8. Persist the validated report, retrieval metrics, and user-controlled exports.
+
+## Live internet research
+
+Open **Internet research settings** in the sidebar:
+
+- **Current web** — current facts, releases, prices, schedules, or changing information
+- **News** — recent events and official announcements
+- **Academic** — studies, reviews, and research reports
+- **Background** — stable explainers and primary-source context
+
+Use freshness to prefer the last day, week, month, or year. Domain controls accept comma-separated
+host names such as `who.int, cdc.gov`; do not include `https://` or page paths.
+
+Search results are cached locally in `data/search-cache.db` for
+`WEB_SEARCH_CACHE_MINUTES` (30 minutes by default). Set `WEB_SEARCH_ENABLED=false` to disable live
+search or `WEB_FETCH_FALLBACK_ENABLED=false` to disable server-side fetch fallback.
+`WEB_FETCH_MAX_FALLBACKS` caps deeper fetches per report (2 by default) to control latency
+and model-token usage.
+
+## Production notes
+
+- Rotate any API key that was present in an earlier copy of `sample.env`.
+- Put the API behind HTTPS and configure `APP_API_KEY` or an identity-aware proxy.
+- SQLite is appropriate for a single instance. Use PostgreSQL and a job queue for
+  multi-instance or high-volume deployments.
+- Free OpenRouter endpoints may log prompts for provider improvement. Do not submit confidential,
+  personal, or regulated information unless the selected provider policy permits it.
+- Web content is untrusted evidence. The synthesizer prompt treats it as data, not
+  instructions, and the model has no mutation tools.
+- OpenRouter server tools are beta and may change. Web-search and model token usage may incur
+  OpenRouter charges; the configured `openrouter` web-fetch engine is free apart from model tokens.
